@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Starttime:</strong>
+  <%= @booking.startTime %>
+</p>
+
+<p>
+  <strong>Endtime:</strong>
+  <%= @booking.endTime %>
+</p>
+
+<p>
+  <strong>Multiplecustomers:</strong>
+  <%= @booking.multipleCustomers %>
+</p>
+
+<p>
+  <strong>Customerlimit:</strong>
+  <%= @booking.customerLimit %>
+</p>
+
+<%= link_to 'Edit', edit_booking_path(@booking) %> |
+<%= link_to 'Back', bookings_path %>
