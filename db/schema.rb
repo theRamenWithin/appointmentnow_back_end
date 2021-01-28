@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_28_005019) do
+ActiveRecord::Schema.define(version: 2021_01_28_032427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,10 @@ ActiveRecord::Schema.define(version: 2021_01_28_005019) do
     t.integer "customerLimit"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
+    t.index ["event_id"], name: "index_bookings_on_event_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -69,6 +73,8 @@ ActiveRecord::Schema.define(version: 2021_01_28_005019) do
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -78,6 +84,8 @@ ActiveRecord::Schema.define(version: 2021_01_28_005019) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "address_id", null: false
+    t.index ["address_id"], name: "index_organizations_on_address_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -88,8 +96,15 @@ ActiveRecord::Schema.define(version: 2021_01_28_005019) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "address_id", null: false
+    t.index ["address_id"], name: "index_users_on_address_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookings", "events"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "events", "users"
+  add_foreign_key "organizations", "addresses"
+  add_foreign_key "users", "addresses"
 end
