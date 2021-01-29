@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_28_232100) do
+ActiveRecord::Schema.define(version: 2021_01_29_034131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(version: 2021_01_28_232100) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
+    t.bigint "organization_id", null: false
+    t.index ["organization_id"], name: "index_events_on_organization_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
@@ -114,6 +116,7 @@ ActiveRecord::Schema.define(version: 2021_01_28_232100) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "events"
   add_foreign_key "bookings", "users"
+  add_foreign_key "events", "organizations"
   add_foreign_key "events", "users"
   add_foreign_key "organization_roles", "organizations"
   add_foreign_key "organization_roles", "users"
