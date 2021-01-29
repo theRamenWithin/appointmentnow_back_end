@@ -1,7 +1,74 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require "faker"
+
+200.times do 
+    addresses = Address.new(
+        addressLine1: Faker::Address.street_address,
+        addressLine2: Faker::Address.secondary_address,
+        city: Faker::Address.city,
+        state: Faker::Address.state,
+        country: Faker::Address.country,
+        postcode: Faker::Address.postcode
+    )
+    
+    addresses.save
+
+end
+
+20.times do
+    users = User.new(
+        firstName: Faker::Name.first_name,
+        lastName: Faker::Name.last_name,
+        mobile: Faker::PhoneNumber.cell_phone,
+        email: Faker::Internet.email,
+        address_id: rand(1..100)
+
+    )
+
+    users.save
+
+end
+
+10.times do
+    organizations = Organization.new(
+        organizationName: Faker::Company.name,
+        description: Faker::Company.catch_phrase,
+        phone: Faker::PhoneNumber.phone_number,
+        email: Faker::Internet.email,
+        address_id: rand(1..100)
+    )
+    
+    organizations.save
+
+end
+
+100.times do
+    events = Event.new(
+        title: Faker::GreekPhilosophers.name,
+        description: Faker::Quote.yoda,
+        date: Faker::Date.between(from: '2014-09-23', to: '2014-09-25'),
+        user_id: rand(1..10)
+    )
+    
+    events.save
+
+end
+
+
+# 50.times do
+#     bookings = Booking.new(
+#         startTime: 
+#         endTime:
+#         multipleCustomers:
+#         customerLimit:
+
+#     )
+
+#     bookings.save
+
+# end
+
+
+# 100.times do 
+
+# end
+
