@@ -54,18 +54,19 @@ end
 end
 
 
-# 50.times do
-#     bookings = Booking.new(
-#         startTime: 
-#         endTime:
-#         multipleCustomers:
-#         customerLimit:
+50.times do
+    bookings = Booking.new(
+        startTime: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :default),
+        endTime: Faker::Time.forward(days: 23, period: :morning),
+        multipleCustomers: [true, false].sample,
+        customerLimit: 1,
+        event_id: rand(1..10),
+        user_id: rand(1..10)
+    )
 
-#     )
+    bookings.save
 
-#     bookings.save
-
-# end
+end
 
 
 # 100.times do 
