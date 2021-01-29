@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :organization_roles
   resources :events
   resources :bookings
   resources :organizations
