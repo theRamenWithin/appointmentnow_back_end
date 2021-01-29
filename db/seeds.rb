@@ -1,6 +1,6 @@
 require "faker"
 
-100.times do 
+200.times do 
     addresses = Address.new(
         addressLine1: Faker::Address.street_address,
         addressLine2: Faker::Address.secondary_address,
@@ -13,10 +13,50 @@ require "faker"
     addresses.save
 
 end
-# Bookings, how do I fake the user and event bit?
-# 100.times do
+
+20.times do
+    users = User.new(
+        firstName: Faker::Name.first_name,
+        lastName: Faker::Name.last_name,
+        mobile: Faker::PhoneNumber.cell_phone,
+        email: Faker::Internet.email,
+        address_id: rand(1..100)
+
+    )
+
+    users.save
+
+end
+
+10.times do
+    organizations = Organization.new(
+        organizationName: Faker::Company.name,
+        description: Faker::Company.catch_phrase,
+        phone: Faker::PhoneNumber.phone_number,
+        email: Faker::Internet.email,
+        address_id: rand(1..100)
+    )
+    
+    organizations.save
+
+end
+
+100.times do
+    events = Event.new(
+        title: Faker::GreekPhilosophers.name,
+        description: Faker::Quote.yoda,
+        date: Faker::Date.between(from: '2014-09-23', to: '2014-09-25'),
+        user_id: rand(1..10)
+    )
+    
+    events.save
+
+end
+
+
+# 50.times do
 #     bookings = Booking.new(
-#         startTime:
+#         startTime: 
 #         endTime:
 #         multipleCustomers:
 #         customerLimit:
@@ -26,40 +66,7 @@ end
 #     bookings.save
 
 # end
-# likewise, how do I save the user bit
-# 100.times do
-#     events = Event.new(
-#         title:
-#         description:
-#         date:
-#     )
-    
-#     event.save
 
-# end
-
-# 100.times do
-#     organizations = Organization.new(
-#         organizationName: Faker::Company.name,
-#         description: Faker::Company.catch_phrase,
-#         phone: Faker::PhoneNumber.phone_number,
-#         email: Faker::Internet.email
-#     )
-    
-#     organizations.save
-
-# end
-
-# 100.times do
-#     users = Users.new(
-#         firstName: Faker::Name.first_name,
-#         lastName: Faker::Name.last_name,
-#         mobile: Faker::PhoneNumber.cell_phone,
-#         email: Faker::Internet.email
-
-#     )
-
-# end
 
 # 100.times do 
 
