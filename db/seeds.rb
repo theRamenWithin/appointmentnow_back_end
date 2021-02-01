@@ -54,7 +54,7 @@ end
         mobile: 55555555,
         email: 'handyandy@gmail.com',
         password_digest: 'password',
-        username: 'handyandy',
+        username: 'admin',
         address_id: @address.id
     )
     @user.save
@@ -97,7 +97,7 @@ end
         mobile: 55555555,
         email: 'offsiderhandyandy@gmail.com',
         password_digest: 'password',
-        username: 'offsider',
+        username: 'manager',
         address_id: @address.id
     )
     @user.save
