@@ -110,3 +110,28 @@ end
     @organization_role.save
     puts "#{i} organization role created"
 end
+
+# Creates fake event and booking
+1.times do |i|
+    @event = Event.new(
+        title: 'Test Event 1',
+        description: 'Event for Testing',
+        date: DateTime.now,
+        user_id: 19,
+        organization_id: 21
+
+
+    )
+    @event.save
+    puts "#{i} event created"
+
+    @booking = Booking.new(
+        startTime: Faker::Time.between(from: DateTime.now, to: DateTime.now + 1),
+        endTime: Faker::Time.between(from: DateTime.now + 3, to: DateTime.now + 12),
+        user_id: 21,
+        event_id: @event.id
+    )
+    @booking.save
+    puts "#{i} booking created"
+
+end
