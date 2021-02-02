@@ -1,14 +1,21 @@
 Rails.application.routes.draw do
-  resources :organization_roles
-  resources :events
-  resources :bookings
-  resources :organizations
-  resources :addresses
+  # resources :organization_roles
+  # resources :events
+  # resources :bookings
+  # resources :organizations
+  # resources :addresses
   
   resources :users, only: [:create, :show, :index]
 
-  post '/sign_up', to: 'users#create'  
+  post '/sign_up', to: 'users#create'
+
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/logged_in', to: 'sessions#is_logged_in?'
+
+  get '/organisation/search', to: 'organizations#search'
+  get '/organisation/namecheck', to: 'organizations#show'
+  post '/organisation/create', to: 'organizations#create'
+  post '/organisation/join', to: 'organization_roles#create'
+
 end
