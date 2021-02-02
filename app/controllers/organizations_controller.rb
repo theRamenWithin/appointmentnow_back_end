@@ -8,6 +8,29 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations/1 or /organizations/1.json
   def show
+    @organization = Organization.find(organization: params[:organization_name])
+    if @organization
+      render json: {
+        unique: false
+      }
+    else
+      render json: {
+        unique: true
+      }
+    end
+  end
+
+  def search
+    @organizations = Organization.where('organization_name LIKE ?', '%#{params[:organization_name]}%')
+    if @organizations
+      render json: {
+        organizations: @organizations
+      }
+    else
+      render json: {
+        organizations: false
+      }
+    end
   end
 
   # GET /organizations/new
@@ -22,15 +45,24 @@ class OrganizationsController < ApplicationController
   # POST /organizations or /organizations.json
   def create
     @organization = Organization.new(organization_params)
-
-    respond_to do |format|
-      if @organization.save
-        format.html { redirect_to @organization, notice: "Organization was successfully created." }
-        format.json { render :show, status: :created, location: @organization }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @organization.errors, status: :unprocessable_entity }
-      end
+    if @organization.save
+      # TODO A method to assign a role of administrator
+      @organization_role = OrganizationRole.new(
+        organization_id: organization_params[:id],
+        user_id: user,
+        role: 2
+      )
+      @organization_role.save
+      render json: {
+        status: 200,
+        created: true,
+        organization_path: @organization.organization_name.parameterize 
+      }
+    else 
+      render json: {
+        status: 500,
+        errors: @organization.errors.full_messages
+      }
     end
   end
 
@@ -64,6 +96,6 @@ class OrganizationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def organization_params
-      params.require(:organization).permit(:organizationName, :description, :phone, :email)
+      params.require(:organization).permit(:organization_name, :description, :phone, :email)
     end
 end

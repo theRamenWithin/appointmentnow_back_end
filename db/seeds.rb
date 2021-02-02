@@ -3,8 +3,8 @@ require "faker"
 # Creation of Fake Users and Addresses
 20.times do |i|
     @address = Address.new(
-        addressLine1: Faker::Address.street_address,
-        addressLine2: Faker::Address.secondary_address,
+        address_line_1: Faker::Address.street_address,
+        address_line_2: Faker::Address.secondary_address,
         city: Faker::Address.city,
         state: Faker::Address.state,
         country: Faker::Address.country,
@@ -14,8 +14,8 @@ require "faker"
     puts "#{i} address created"
 
     @user = User.new(
-        firstName: Faker::Name.first_name,
-        lastName: Faker::Name.last_name,
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
         mobile: Faker::PhoneNumber.cell_phone,
         email: Faker::Internet.email,
         password_digest: User.digest('password'),
@@ -26,7 +26,7 @@ require "faker"
     puts "#{i} user created"
 
     @organization = Organization.new(
-        organizationName: Faker::Company.name,
+        organization_name: Faker::Company.name,
         description: Faker::Company.catch_phrase,
         phone: Faker::PhoneNumber.phone_number,
         email: Faker::Internet.email,
@@ -38,8 +38,8 @@ end
 # Creation of Fake Admin: Handy Andy
 1.times do |i|
     @address = Address.new(
-        addressLine1: '1 Test Way',
-        addressLine2: 'Unit 1',
+        address_line_1: '1 Test Way',
+        address_line_2: 'Unit 1',
         city: 'London',
         state: 'England',
         country: 'United Kingdom',
@@ -49,8 +49,8 @@ end
     puts "#{i} address created"
 
     @user = User.new(
-        firstName: 'Handy',
-        lastName: 'Andy',
+        first_name: 'Handy',
+        last_name: 'Andy',
         mobile: 55555555,
         email: 'handyandy@gmail.com',
         password_digest: User.digest('password'),
@@ -61,7 +61,7 @@ end
     puts "#{i} user created"
 
     @organization = Organization.new(
-        organizationName: 'Handy Andy Fixes',
+        organization_name: 'Handy Andy Fixes',
         description: 'Handy Andy Fixes Stuff PTY LTD',
         phone: 55555554,
         email: 'handyandybusiness@gmail.com',
@@ -81,8 +81,8 @@ end
 # Creation of Fake Manager
 1.times do |i|
     @address = Address.new(
-        addressLine1: Faker::Address.street_address,
-        addressLine2: Faker::Address.secondary_address,
+        address_line_1: Faker::Address.street_address,
+        address_line_2: Faker::Address.secondary_address,
         city: Faker::Address.city,
         state: Faker::Address.state,
         country: Faker::Address.country,
@@ -92,8 +92,8 @@ end
     puts "#{i} address created"
 
     @user = User.new(
-        firstName: 'Offsider',
-        lastName: 'Andy',
+        first_name: 'Offsider',
+        last_name: 'Andy',
         mobile: 55555555,
         email: 'offsiderhandyandy@gmail.com',
         password_digest: User.digest('password'),
@@ -126,8 +126,8 @@ end
     puts "#{i} event created"
 
     @booking = Booking.new(
-        startTime: Faker::Time.between(from: DateTime.now, to: DateTime.now + 1),
-        endTime: Faker::Time.between(from: DateTime.now + 3, to: DateTime.now + 12),
+        start_time: Faker::Time.between(from: DateTime.now, to: DateTime.now + 1),
+        end_time: Faker::Time.between(from: DateTime.now + 3, to: DateTime.now + 12),
         user_id: 21,
         event_id: @event.id
     )

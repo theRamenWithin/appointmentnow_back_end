@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_01_062013) do
+ActiveRecord::Schema.define(version: 2021_02_02_094536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 2021_02_01_062013) do
   end
 
   create_table "addresses", force: :cascade do |t|
-    t.text "addressLine1"
-    t.text "addressLine2"
+    t.text "address_line_1"
+    t.text "address_line_2"
     t.text "city"
     t.text "state"
     t.text "country"
@@ -55,10 +55,10 @@ ActiveRecord::Schema.define(version: 2021_02_01_062013) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.time "startTime"
-    t.time "endTime"
-    t.boolean "multipleCustomers"
-    t.integer "customerLimit"
+    t.time "start_time"
+    t.time "end_time"
+    t.boolean "multiple_customers"
+    t.integer "customer_limit"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2021_02_01_062013) do
   end
 
   create_table "organizations", force: :cascade do |t|
-    t.text "organizationName"
+    t.text "organization_name"
     t.text "description"
     t.string "phone"
     t.string "email"
@@ -101,8 +101,8 @@ ActiveRecord::Schema.define(version: 2021_02_01_062013) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "firstName"
-    t.string "lastName"
+    t.string "first_name"
+    t.string "last_name"
     t.integer "mobile"
     t.string "email"
     t.string "password_digest"
