@@ -18,7 +18,7 @@ require "faker"
         lastName: Faker::Name.last_name,
         mobile: Faker::PhoneNumber.cell_phone,
         email: Faker::Internet.email,
-        password_digest: 'password',
+        password_digest: User.digest('password'),
         username: Faker::Internet.username,
         address_id: @address.id
     )
@@ -53,7 +53,7 @@ end
         lastName: 'Andy',
         mobile: 55555555,
         email: 'handyandy@gmail.com',
-        password_digest: 'password',
+        password_digest: User.digest('password'),
         username: 'admin',
         address_id: @address.id
     )
@@ -96,7 +96,7 @@ end
         lastName: 'Andy',
         mobile: 55555555,
         email: 'offsiderhandyandy@gmail.com',
-        password_digest: 'password',
+        password_digest: User.digest('password'),
         username: 'manager',
         address_id: @address.id
     )
