@@ -22,15 +22,16 @@ class OrganizationRolesController < ApplicationController
   # POST /organization_roles or /organization_roles.json
   def create
     @organization_role = OrganizationRole.new(organization_role_params)
-
-    respond_to do |format|
-      if @organization_role.save
-        format.html { redirect_to @organization_role, notice: "Organization role was successfully created." }
-        format.json { render :show, status: :created, location: @organization_role }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @organization_role.errors, status: :unprocessable_entity }
-      end
+    if @organization_role.save
+      render json: {
+        status: 200,
+        joined: true,
+      }
+    else 
+      render json: {
+        status: 500,
+        errors: @organization_role.errors.full_messages
+      }
     end
   end
 
