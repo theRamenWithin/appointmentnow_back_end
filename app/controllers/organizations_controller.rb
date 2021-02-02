@@ -33,14 +33,14 @@ class OrganizationsController < ApplicationController
     end
   end
 
-  # GET /organizations/new
-  def new
-    @organization = Organization.new
-  end
+  # # GET /organizations/new
+  # def new
+  #   @organization = Organization.new
+  # end
 
-  # GET /organizations/1/edit
-  def edit
-  end
+  # # GET /organizations/1/edit
+  # def edit
+  # end
 
   # POST /organizations or /organizations.json
   def create

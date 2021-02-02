@@ -11,7 +11,7 @@ require "faker"
         postcode: Faker::Address.postcode,
     )
     @address.save
-    puts "#{i} address created"
+    puts "#{i + 1} address created"
 
     @user = User.new(
         first_name: Faker::Name.first_name,
@@ -23,7 +23,7 @@ require "faker"
         address_id: @address.id
     )
     @user.save
-    puts "#{i} user created"
+    puts "#{i + 1} user created"
 
     @organization = Organization.new(
         organization_name: Faker::Company.name,
@@ -33,7 +33,7 @@ require "faker"
         address_id: @address.id
     )
     @organization.save
-    puts "#{i} organization created"
+    puts "#{i + 1} organization created"
 end
 # Creation of Fake Admin: Handy Andy
 1.times do |i|
@@ -46,7 +46,7 @@ end
         postcode: 'W1 9AH'
     )
     @address.save
-    puts "#{i} address created"
+    puts "#{i + 1} address created"
 
     @user = User.new(
         first_name: 'Handy',
@@ -58,7 +58,7 @@ end
         address_id: @address.id
     )
     @user.save
-    puts "#{i} user created"
+    puts "#{i + 1} user created"
 
     @organization = Organization.new(
         organization_name: 'Handy Andy Fixes',
@@ -68,7 +68,7 @@ end
         address_id: @address.id,
     )
     @organization.save
-    puts "#{i} organization created"
+    puts "#{i + 1} organization created"
 
     @organization_role = OrganizationRole.new(
         organization_id: @organization.id,
@@ -76,7 +76,7 @@ end
         role: 2
     )
     @organization_role.save
-    puts "#{i} organization role created"
+    puts "#{i +1} organization role created"
 end
 # Creation of Fake Manager
 1.times do |i|
@@ -89,7 +89,7 @@ end
         postcode: Faker::Address.postcode,
     )
     @address.save
-    puts "#{i} address created"
+    puts "#{i +1} address created"
 
     @user = User.new(
         first_name: 'Offsider',
@@ -108,7 +108,7 @@ end
         role: 1
     )
     @organization_role.save
-    puts "#{i} organization role created"
+    puts "#{i +1} organization role created"
 end
 
 # Creates fake event and booking
@@ -123,7 +123,7 @@ end
 
     )
     @event.save
-    puts "#{i} event created"
+    puts "#{i +1} event created"
 
     @booking = Booking.new(
         start_time: Faker::Time.between(from: DateTime.now, to: DateTime.now + 1),
@@ -132,6 +132,6 @@ end
         event_id: @event.id
     )
     @booking.save
-    puts "#{i} booking created"
+    puts "#{i + 1} booking created"
 
 end
