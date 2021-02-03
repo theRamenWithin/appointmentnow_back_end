@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/logged_in', to: 'sessions#is_logged_in?'
 
-  get '/organisation/search', to: 'organizations#search'
+  post '/organisation/search', to: 'organizations#search'
   get '/organisation/namecheck', to: 'organizations#show'
   post '/organisation/create', to: 'organizations#create'
   post '/organisation/join', to: 'organization_roles#create'
