@@ -21,7 +21,7 @@ class OrganizationsController < ApplicationController
   end
 
   def search
-    @organizations = Organization.where('organization_name LIKE ?', '%#{params[:organization_name]}%')
+    @organizations = Organization.where('organization_name LIKE ?', '%#{params[:organization][:organization_name]}%')
     if @organizations
       render json: {
         organizations: @organizations
