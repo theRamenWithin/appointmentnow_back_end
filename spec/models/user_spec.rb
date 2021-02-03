@@ -30,6 +30,4 @@ RSpec.describe User, type: :model do
             expect(User.last.first_name).to eq('Test')
         end
     end
-
-# TEST FOR USER LOGIN
 end
