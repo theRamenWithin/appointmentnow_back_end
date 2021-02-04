@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   
   resources :users, only: [:create, :show, :index]
 
+  
   post '/sign_up', to: 'users#create'
 
   post '/login', to: 'sessions#create'
@@ -17,5 +18,6 @@ Rails.application.routes.draw do
   get '/organisation/namecheck', to: 'organizations#show'
   post '/organisation/create', to: 'organizations#create'
   post '/organisation/join', to: 'organization_roles#create'
-
+  get 'organisation/org_routes', to: 'application#org_routes'
+  
 end
