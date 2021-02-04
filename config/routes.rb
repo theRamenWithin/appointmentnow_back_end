@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get '/logged_in', to: 'sessions#is_logged_in?'
 
   post '/organisation/search', to: 'organizations#search'
-  get '/organisation/namecheck', to: 'organizations#show'
+  post '/organisation/namecheck', to: 'organizations#show'
   post '/organisation/create', to: 'organizations#create'
   post '/organisation/join', to: 'organization_roles#create'
   get 'organisation/org_routes', to: 'application#org_routes'

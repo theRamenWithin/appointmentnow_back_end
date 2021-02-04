@@ -1,16 +1,21 @@
 class OrganizationsController < ApplicationController
-  before_action :set_organization, only: %i[ show edit update destroy ]
+  before_action :set_organization, only: %i[ edit update destroy ]
 
   # GET /organizations or /organizations.json
   def index
     @organizations = Organization.all
   end
 
+  # def show
+  #   @organization = Organization.find(organization: params[:organization_name])
+  # end
+
   # GET /organizations/1 or /organizations/1.json
   def show
-    @organization = Organization.find(organization: params[:organization_name])
+    @organization = Organization.find_by(organization_name: params[:organizationUnique][:organization_name])
     if @organization
       render json: {
+        nameID: @organization.id,
         unique: false
       }
     else
@@ -21,7 +26,7 @@ class OrganizationsController < ApplicationController
   end
 
   def search
-    @organizations = Organization.where('organization_name ILIKE ?', '%' + params[:organization][:organization_name] + '%')
+    @organizations = Organization.where('organization_name ILIKE ?', '%' + params[:organizationSearch][:organization_name] + '%')
     if @organizations
       render json: {
         organizations: @organizations
