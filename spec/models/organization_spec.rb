@@ -20,6 +20,7 @@ RSpec.describe Organization, type: :model do
                     description: 'Handy Andy Fixes Stuff PTY LTD',
                     phone: 55555554,
                     email: 'handyandybusiness@gmail.com',
+                    website: 'http://test.com',
                     address_id: @address.id,
                 )
                 @organization.save

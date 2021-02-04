@@ -30,7 +30,8 @@ require "faker"
         description: Faker::Company.catch_phrase,
         phone: Faker::PhoneNumber.phone_number,
         email: Faker::Internet.email,
-        address_id: @address.id
+        address_id: @address.id,
+        website: Faker::Internet.url
     )
     @organization.save
     puts "#{i + 1} organization created"
