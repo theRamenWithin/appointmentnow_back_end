@@ -18,6 +18,6 @@ Rails.application.routes.draw do
   post '/organisation/namecheck', to: 'organizations#show'
   post '/organisation/create', to: 'organizations#create'
   post '/organisation/join', to: 'organization_roles#create'
-  get 'organisation/org_routes', to: 'application#org_routes'
+  get '/org_routes', to: 'application#org_routes'
   
 end
