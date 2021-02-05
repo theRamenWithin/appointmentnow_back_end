@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     @org_param_routes = []
 
     Organization.all.each do |org|
-      @org_param_routes << org.organization_name.parameterize
+      @org_param_routes << [org.organization_name.parameterize, org.id]
     end
 
     if @org_param_routes
