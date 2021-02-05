@@ -22,18 +22,4 @@ class ApplicationController < ActionController::Base
     session.clear
   end
 
-  def org_routes
-    @org_param_routes = []
-
-    Organization.all.each do |org|
-      @org_param_routes << [org.organization_name.parameterize, org.id]
-    end
-
-    if @org_param_routes
-      render json: {
-        organizations_routes: @org_param_routes
-      }
-    end
-  end
-
 end
