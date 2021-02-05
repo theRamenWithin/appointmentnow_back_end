@@ -51,7 +51,6 @@ class OrganizationsController < ApplicationController
   def create
     @organization = Organization.new(organization_params)
     if @organization.save
-      # TODO A method to assign a role of administrator
       @organization_role = OrganizationRole.new(
         organization_id: organization_params[:id],
         user_id: user,
