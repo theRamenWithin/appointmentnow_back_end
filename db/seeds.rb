@@ -1,26 +1,15 @@
 require "faker"
 
 # Creation of Fake Users and Addresses
-20.times do |i|
-    @address = Address.new(
-        address_line_1: Faker::Address.street_address,
-        address_line_2: Faker::Address.secondary_address,
-        city: Faker::Address.city,
-        state: Faker::Address.state,
-        country: Faker::Address.country,
-        postcode: Faker::Address.postcode,
-    )
-    @address.save
-    puts "#{i + 1} address created"
 
+20.times do |i|
     @user = User.new(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
         mobile: Faker::PhoneNumber.cell_phone,
         email: Faker::Internet.email,
         password_digest: User.digest('password'),
-        username: Faker::Internet.username,
-        address_id: @address.id
+        username: Faker::Internet.username
     )
     @user.save
     puts "#{i + 1} user created"
@@ -35,7 +24,22 @@ require "faker"
     )
     @organization.save
     puts "#{i + 1} organization created"
+
+    @address = Address.new(
+        address_line_1: Faker::Address.street_address,
+        address_line_2: Faker::Address.secondary_address,
+        city: Faker::Address.city,
+        state: Faker::Address.state,
+        country: Faker::Address.country,
+        postcode: Faker::Address.postcode,
+        user_id: 1,
+        organization_id: 1
+    )
+    @address.save
+    puts "#{i + 1} address created"
+
 end
+
 # Creation of Fake Admin: Handy Andy
 1.times do |i|
     @address = Address.new(
@@ -55,8 +59,7 @@ end
         mobile: 55555555,
         email: 'handyandy@gmail.com',
         password_digest: User.digest('password'),
-        username: 'admin',
-        address_id: @address.id
+        username: 'admin'
     )
     @user.save
     puts "#{i + 1} user created"
@@ -65,8 +68,7 @@ end
         organization_name: 'Handy Andy Fixes',
         description: 'Handy Andy Fixes Stuff PTY LTD',
         phone: 55555554,
-        email: 'handyandybusiness@gmail.com',
-        address_id: @address.id,
+        email: 'handyandybusiness@gmail.com'
     )
     @organization.save
     puts "#{i + 1} organization created"
@@ -87,7 +89,7 @@ end
         city: Faker::Address.city,
         state: Faker::Address.state,
         country: Faker::Address.country,
-        postcode: Faker::Address.postcode,
+        postcode: Faker::Address.postcode
     )
     @address.save
     puts "#{i +1} address created"
@@ -98,8 +100,7 @@ end
         mobile: 55555555,
         email: 'offsiderhandyandy@gmail.com',
         password_digest: User.digest('password'),
-        username: 'manager',
-        address_id: @address.id
+        username: 'manager'
     )
     @user.save
 
@@ -120,8 +121,6 @@ end
         date: DateTime.now,
         user_id: 19,
         organization_id: 21
-
-
     )
     @event.save
     puts "#{i +1} event created"
