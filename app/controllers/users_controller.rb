@@ -38,7 +38,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     if @user.save
       login!
       render json: {
@@ -46,6 +45,17 @@ class UsersController < ApplicationController
         created: true,
         user: @user
       }
+      @address = Address.new(
+        address_line_1: nil,
+        address_line_2: nil,
+        city: nil,
+        state: nil,
+        country: nil,
+        postcode: nil,
+        user_id: @user.id,
+        organization_id: nil
+      )
+      @address.save
     else 
       render json: {
         status: 500,
