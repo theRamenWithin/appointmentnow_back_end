@@ -17,9 +17,17 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if @user
-      render json: {
-        user: @user
-      }
+      if current_user.id = @user.id
+        @address = @user.address
+        render json: { 
+          user: @user,
+          address: @address
+          }
+      else
+        render json: {
+          user: @user
+        }
+      end
     else
       render json: {
         status: 500,
@@ -30,6 +38,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
     if @user.save
       login!
       render json: {
@@ -44,6 +53,30 @@ class UsersController < ApplicationController
       }
     end
   end
+
+  def update
+    if @user.update(user_params)
+      render json: {
+      status: 200,
+      user: @user
+      }
+    else 
+      render json: {
+      status: 500,
+      errors: @user.errors.full_messages
+      }
+    end
+  end
+
+  def destroy
+    @user.destroy
+    logout!
+    render json: {
+      status: 200,
+      logged_out: true
+    }
+  end
+
 
   private
     

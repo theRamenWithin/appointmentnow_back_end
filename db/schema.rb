@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_02_094536) do
+ActiveRecord::Schema.define(version: 2021_02_05_060005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,10 @@ ActiveRecord::Schema.define(version: 2021_02_02_094536) do
     t.integer "postcode"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.bigint "organization_id"
+    t.index ["organization_id"], name: "index_addresses_on_organization_id"
+    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "bookings", force: :cascade do |t|
@@ -96,8 +100,6 @@ ActiveRecord::Schema.define(version: 2021_02_02_094536) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "address_id", null: false
-    t.index ["address_id"], name: "index_organizations_on_address_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -109,18 +111,16 @@ ActiveRecord::Schema.define(version: 2021_02_02_094536) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
-    t.bigint "address_id"
-    t.index ["address_id"], name: "index_users_on_address_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "addresses", "organizations"
+  add_foreign_key "addresses", "users"
   add_foreign_key "bookings", "events"
   add_foreign_key "bookings", "users"
   add_foreign_key "events", "organizations"
   add_foreign_key "events", "users"
   add_foreign_key "organization_roles", "organizations"
   add_foreign_key "organization_roles", "users"
-  add_foreign_key "organizations", "addresses"
-  add_foreign_key "users", "addresses"
 end

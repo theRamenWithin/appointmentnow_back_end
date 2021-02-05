@@ -1,11 +1,11 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: %i[ edit update destroy ]
 
-  # GET /organizations or /organizations.json
   def index
     @organizations = Organization.all
   end
 
+  # GET /organizations/1 or /organizations/1.json
   # def show
   #   @organization = Organization.find(organization: params[:organization_name])
   # end
