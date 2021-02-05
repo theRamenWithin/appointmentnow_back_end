@@ -62,6 +62,17 @@ class OrganizationsController < ApplicationController
         created: true,
         organization_path: @organization.organization_name.parameterize 
       }
+      @address = Address.new(
+        address_line_1: nil,
+        address_line_2: nil,
+        city: nil,
+        state: nil,
+        country: nil,
+        postcode: nil,
+        user_id: nil,
+        organization_id: @organization.id
+      )
+      @address.save
     else 
       render json: {
         status: 500,
