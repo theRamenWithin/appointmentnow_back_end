@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   # User routes
   get '/users/show', to: 'users#show'
 
-  # get 'organisation/org_routes', to: '#org_routes'
+  # Routing data for React
+  get 'organisation/org_routes', to: '#org_routes'
   
 end

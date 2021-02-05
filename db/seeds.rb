@@ -18,7 +18,9 @@ require "faker"
         organization_name: Faker::Company.name,
         description: Faker::Company.catch_phrase,
         phone: Faker::PhoneNumber.phone_number,
-        email: Faker::Internet.email
+        email: Faker::Internet.email,
+        address_id: @address.id,
+        website: Faker::Internet.url
     )
     @organization.save
     puts "#{i + 1} organization created"
