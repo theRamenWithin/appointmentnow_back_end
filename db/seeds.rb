@@ -19,7 +19,6 @@ require "faker"
         description: Faker::Company.catch_phrase,
         phone: Faker::PhoneNumber.phone_number,
         email: Faker::Internet.email,
-        address_id: @address.id,
         website: Faker::Internet.url
     )
     @organization.save

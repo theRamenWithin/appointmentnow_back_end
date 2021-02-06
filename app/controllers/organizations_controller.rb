@@ -6,11 +6,6 @@ class OrganizationsController < ApplicationController
   end
 
   # GET /organizations/1 or /organizations/1.json
-  # def show
-  #   @organization = Organization.find(organization: params[:organization_name])
-  # end
-
-  # GET /organizations/1 or /organizations/1.json
   def show
     @organization = Organization.find_by(organization_name: params[:organizationUnique][:organization_name])
     if @organization
@@ -37,15 +32,6 @@ class OrganizationsController < ApplicationController
       }
     end
   end
-
-  # # GET /organizations/new
-  # def new
-  #   @organization = Organization.new
-  # end
-
-  # # GET /organizations/1/edit
-  # def edit
-  # end
 
   # POST /organizations or /organizations.json
   def create
