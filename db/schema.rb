@@ -101,7 +101,6 @@ ActiveRecord::Schema.define(version: 2021_02_05_060005) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "website"
-    t.index ["address_id"], name: "index_organizations_on_address_id"
   end
 
   create_table "users", force: :cascade do |t|
