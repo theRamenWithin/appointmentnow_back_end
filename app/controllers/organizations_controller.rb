@@ -1,10 +1,6 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: %i[ edit update destroy ]
 
-  def index
-    @organizations = Organization.all
-  end
-
   # GET /organizations/1 or /organizations/1.json
   def show
     @organization = Organization.find_by(organization_name: params[:organizationUnique][:organization_name])
