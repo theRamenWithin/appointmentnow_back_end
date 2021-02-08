@@ -39,7 +39,7 @@ class OrganizationsController < ApplicationController
     if @organization.save
       @organization_role = OrganizationRole.new(
         organization_id: organization_params[:id],
-        user_id: user,
+        user_id: session[:user_id],
         role: 2
       )
       @organization_role.save
@@ -93,7 +93,7 @@ class OrganizationsController < ApplicationController
     @org_param_routes = []
 
     Organization.all.each do |org|
-      @org_param_routes << [org.organization_name.parameterize, org.id]
+      @org_param_routes << org.organization_name.parameterize
     end
 
     if @org_param_routes
