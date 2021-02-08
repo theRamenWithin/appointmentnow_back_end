@@ -36,17 +36,7 @@ class AddressesController < ApplicationController
 
   # PATCH/PUT /addresses/1 or /addresses/1.json
   def update
-    if @address.update(address_params)
-      render :show {
-        status: :ok, 
-        location: @address 
-      }
-    else
-      render json: {
-        @address.errors, 
-        status: :unprocessable_entity 
-      }
-    end
+    @address.update(address_params)
   end
 
   def destroy
