@@ -1,22 +1,8 @@
 class OrganizationRolesController < ApplicationController
   before_action :set_organization_role, only: %i[ show edit update destroy ]
 
-  # GET /organization_roles or /organization_roles.json
-  def index
-    @organization_roles = OrganizationRole.all
-  end
-
   # GET /organization_roles/1 or /organization_roles/1.json
   def show
-  end
-
-  # GET /organization_roles/new
-  def new
-    @organization_role = OrganizationRole.new
-  end
-
-  # GET /organization_roles/1/edit
-  def edit
   end
 
   # POST /organization_roles or /organization_roles.json
