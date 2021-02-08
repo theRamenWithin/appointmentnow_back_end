@@ -21,11 +21,15 @@ class OrganizationRolesController < ApplicationController
 
   # POST /organization_roles or /organization_roles.json
   def create
-    @organization_role = OrganizationRole.new(organization_role_params)
+    @organization_role = OrganizationRole.new(
+      organization_id: organization_role_params[:organization_id],
+      user_id: organization_role_params[:user_id],
+      role: 0
+    )
     if @organization_role.save
       render json: {
         status: 200,
-        joined: true,
+        joined: true
       }
     else 
       render json: {
