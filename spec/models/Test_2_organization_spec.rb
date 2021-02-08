@@ -23,7 +23,7 @@ RSpec.describe Organization, type: :model do
                     organization_id: @organization.id
                 )
                 @address.save
-                puts "#{i + 1} address created"
+                puts "Address for organization created"
 
             end
             expect(Organization.last.organization_name).to eq('Organization Test')

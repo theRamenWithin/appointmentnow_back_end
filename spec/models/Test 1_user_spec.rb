@@ -13,7 +13,7 @@ RSpec.describe User, type: :model do
                     username: 'rspec'
                 )
                 @user.save
-                # puts "#{i + 1} user created"
+                puts "#{i + 1} user created"
             end
                 
                 @address = Address.new(
@@ -26,7 +26,7 @@ RSpec.describe User, type: :model do
                     user_id: @user.id
                 )
                 @address.save
-                # puts "#{i + 1} address created"
+                puts "address for user created"
             
 
             expect(User.last.first_name).to eq('Test')
